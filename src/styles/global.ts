@@ -25,8 +25,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
   }
 
   body, input, textarea, button {
-    font-family: 'Inter', sans-serif;
-    line-height: 140%;
+    font-family: 'Roboto', sans-serif;
+    line-height: 130%;
     font-size: 1.4rem;
     font-weight: 400;
   }
