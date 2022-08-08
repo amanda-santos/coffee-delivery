@@ -27,5 +27,3 @@ export const defaultTheme = {
     "2xl": "1536px",
   },
 };
-
-export type ThemeType = typeof defaultTheme;

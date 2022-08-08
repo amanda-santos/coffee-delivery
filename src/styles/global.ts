@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import { ThemeType } from "styles/themes/default";
-
-export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
+export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -29,5 +27,11 @@ export const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
     line-height: 130%;
     font-size: 1.4rem;
     font-weight: 400;
+  }
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    html {
+      font-size: 87.5%;
+    }
   }
 `;
