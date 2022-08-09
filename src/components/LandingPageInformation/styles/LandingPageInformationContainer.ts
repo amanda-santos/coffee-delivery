@@ -7,6 +7,8 @@ export const LandingPageInformationContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  background-image: url("src/assets/landing-page-background.svg");
+
   padding: 9.6rem 16.8rem;
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.xl}) {
