@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     html {
-      font-size: 87.5%;
+      font-size: 72.5%;
     }
   }
 `;
