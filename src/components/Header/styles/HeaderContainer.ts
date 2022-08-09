@@ -18,6 +18,6 @@ export const HeaderContainer = styled.header`
   }
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 3.2rem 4rem;
+    padding: 3.2rem 2rem;
   }
 `;
