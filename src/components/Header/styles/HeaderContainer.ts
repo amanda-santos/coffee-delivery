@@ -17,7 +17,7 @@ export const HeaderContainer = styled.header`
     gap: 1.2rem;
   }
 
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: 3.2rem 2rem;
   }
 `;
