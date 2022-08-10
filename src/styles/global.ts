@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.colors["background"]};
     color: ${({ theme }) => theme.colors["base-text"]};
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   body, input, textarea, button {

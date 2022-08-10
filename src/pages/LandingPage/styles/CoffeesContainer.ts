@@ -6,5 +6,5 @@ export const CoffeesContainer = styled.main`
   align-items: flex-start;
   justify-content: center;
 
-  margin-top: 9.6rem;
+  margin-top: 6.4rem;
 `;

@@ -6,9 +6,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 25.6rem;
-  height: 28rem;
-
   background-color: ${({ theme }) => theme.colors["base-card"]};
 
   border-top-left-radius: 0.6rem;
@@ -27,4 +24,7 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.colors["base-label"]};
     text-align: center;
   }
+
+  height: 28rem;
+  width: 100%;
 `;
