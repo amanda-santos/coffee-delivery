@@ -1,18 +1,18 @@
 import { ReactElement } from "react";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 
-import { CalloutItem } from "components/LandingPageInformation/components/CalloutItem";
+import { CalloutItem } from "pages/LandingPage/components/CalloutItem";
 import {
   Callout,
   CalloutItemsContainer,
-  LandingPageInformationContainer,
-} from "components/LandingPageInformation/styles";
+  Container,
+} from "pages/LandingPage/components/LandingPageInformation/styles";
 
 import landingPageImage from "assets/landing-page-image.svg";
 
 export const LandingPageInformation = (): ReactElement => {
   return (
-    <LandingPageInformationContainer>
+    <Container>
       <Callout>
         <h1>Find the perfect coffee for any time of day</h1>
         <h6>
@@ -44,6 +44,6 @@ export const LandingPageInformation = (): ReactElement => {
       </Callout>
 
       <img src={landingPageImage} alt="" />
-    </LandingPageInformationContainer>
+    </Container>
   );
 };

@@ -1,22 +1,31 @@
 import { ReactElement } from "react";
 
-import { Header, LandingPageInformation } from "components";
-import { LandingPageContainer } from "pages/LandingPage/styles";
-
+import {
+  CoffeeCard,
+  LandingPageInformation,
+} from "pages/LandingPage/components";
 import { coffeeData } from "data/coffeeData";
+
+import {
+  CoffeesContainer,
+  CoffeesGrid,
+  LandingPageContainer,
+} from "pages/LandingPage/styles";
 
 export const LandingPage = (): ReactElement => {
   return (
     <LandingPageContainer>
       <LandingPageInformation />
 
-      {coffeeData.map((coffee) => (
-        <div>
-          {coffee.name}
-          {coffee.description}
-          <img src={coffee.image} alt="" />
-        </div>
-      ))}
+      <CoffeesContainer>
+        <h3>Our coffees</h3>
+
+        <CoffeesGrid>
+          {coffeeData.map((coffee) => (
+            <CoffeeCard coffee={coffee} />
+          ))}
+        </CoffeesGrid>
+      </CoffeesContainer>
     </LandingPageContainer>
   );
 };

@@ -1,6 +1,6 @@
 import { cloneElement, ReactElement } from "react";
 
-import { CalloutItemContainer } from "components/LandingPageInformation/components/CalloutItem/styles";
+import { CalloutItemContainer } from "pages/LandingPage/components/CalloutItem/styles";
 
 export type CalloutItemProps = {
   text: string;

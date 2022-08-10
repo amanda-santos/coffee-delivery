@@ -1,3 +1,5 @@
+import { Coffee } from "types";
+
 import americanEspressoImg from "assets/coffees-images/american-espresso.svg";
 import arabicImg from "assets/coffees-images/arabic.svg";
 import capuccinoImg from "assets/coffees-images/capuccino.svg";
@@ -13,8 +15,9 @@ import macchiatoImg from "assets/coffees-images/macchiato.svg";
 import mocaccinoImg from "assets/coffees-images/mocaccino.svg";
 import traditionalEspressoImg from "assets/coffees-images/traditional-espresso.svg";
 
-export const coffeeData = [
+export const coffeeData: Coffee[] = [
   {
+    id: "1",
     name: "Traditional Espresso",
     description: "Traditional coffee made with hot water and ground beans",
     price: 9.9,
@@ -22,6 +25,7 @@ export const coffeeData = [
     image: traditionalEspressoImg,
   },
   {
+    id: "2",
     name: "American Espresso",
     description: "Diluted espresso, less intense than traditional",
     price: 9.9,
@@ -29,6 +33,7 @@ export const coffeeData = [
     image: americanEspressoImg,
   },
   {
+    id: "3",
     name: "Creamy Espresso",
     description: "Traditional espresso with creamy foam",
     price: 9.9,
@@ -36,6 +41,7 @@ export const coffeeData = [
     image: creamyEspressoImg,
   },
   {
+    id: "4",
     name: "Iced Espresso",
     description: "Drink prepared with espresso coffee and ice cubes",
     price: 9.9,
@@ -43,6 +49,7 @@ export const coffeeData = [
     image: icedEspressoImg,
   },
   {
+    id: "5",
     name: "Coffee With Milk",
     description: "Half and half traditional espresso with steamed milk",
     price: 9.9,
@@ -50,6 +57,7 @@ export const coffeeData = [
     image: coffeeWithMilkImg,
   },
   {
+    id: "6",
     name: "Latte",
     description: "A shot of espresso with twice the milk and creamy foam",
     price: 9.9,
@@ -57,6 +65,7 @@ export const coffeeData = [
     image: latteImg,
   },
   {
+    id: "7",
     name: "Capuccino",
     description:
       "Cinnamon drink made from equal doses of coffee, milk and foam",
@@ -65,6 +74,7 @@ export const coffeeData = [
     image: capuccinoImg,
   },
   {
+    id: "8",
     name: "Macchiato",
     description: "Espresso mixed with some hot milk and foam",
     price: 9.9,
@@ -72,6 +82,7 @@ export const coffeeData = [
     image: macchiatoImg,
   },
   {
+    id: "9",
     name: "Mocaccino",
     description: "Espresso coffee with chocolate syrup, little milk and foam",
     price: 9.9,
@@ -79,6 +90,7 @@ export const coffeeData = [
     image: mocaccinoImg,
   },
   {
+    id: "10",
     name: "Hot chocolate",
     description: "Drink made with chocolate dissolved in hot milk and coffee",
     price: 9.9,
@@ -86,6 +98,7 @@ export const coffeeData = [
     image: hotChocolateImg,
   },
   {
+    id: "11",
     name: "Cuban",
     description: "Iced espresso drink with rum, cream and mint",
     price: 9.9,
@@ -93,6 +106,7 @@ export const coffeeData = [
     image: cubanImg,
   },
   {
+    id: "12",
     name: "Hawaiian",
     description: "Sweet drink prepared with coffee and coconut milk",
     price: 9.9,
@@ -100,6 +114,7 @@ export const coffeeData = [
     image: hawaiianImg,
   },
   {
+    id: "13",
     name: "Arabic",
     description: "Drink prepared with Arabic coffee beans and spices",
     price: 9.9,
@@ -107,6 +122,7 @@ export const coffeeData = [
     image: arabicImg,
   },
   {
+    id: "14",
     name: "Irish",
     description:
       "Drink made from coffee, Irish whiskey, sugar and whipped cream",

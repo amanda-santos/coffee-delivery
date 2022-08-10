@@ -1,2 +1,2 @@
-export { HeaderButton } from "components/Header/styles/HeaderButton";
-export { HeaderContainer } from "components/Header/styles/HeaderContainer";
+export { Button } from "components/Header/styles/Button";
+export { Container } from "components/Header/styles/Container";

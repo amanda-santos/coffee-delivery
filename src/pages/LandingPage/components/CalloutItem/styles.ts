@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { CalloutItemProps } from "components/LandingPageInformation/components/CalloutItem";
+import { CalloutItemProps } from "pages/LandingPage/components/CalloutItem";
 
 export type CalloutItemContainerProps = {
   $color: CalloutItemProps["color"];

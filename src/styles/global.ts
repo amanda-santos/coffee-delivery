@@ -29,6 +29,35 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  h1, h2, h3, h4, h5, h6, p {
+    line-height: 130%;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Baloo 2", cursive;
+    font-weight: 800;
+    color: ${({ theme }) => theme.colors["base-title"]};
+  }
+
+  h1 {
+    font-size: 4.8rem;
+  }
+
+  h3 {
+    font-size: 3.2rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors["base-subtitle"]};
+  }
+
+  h5, h6 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     html {
       font-size: 72.5%;

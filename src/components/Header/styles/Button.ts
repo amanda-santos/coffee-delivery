@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-type HeaderButtonProps = {
+type ButtonProps = {
   $color: "primary" | "secondary";
 };
 
-export const HeaderButton = styled.button<HeaderButtonProps>`
+export const Button = styled.button<ButtonProps>`
   height: 4rem;
 
   display: flex;
