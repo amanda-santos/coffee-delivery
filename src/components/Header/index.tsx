@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { MapPin, ShoppingCart } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 import { Button, Container } from "components/Header/styles";
 import logoImg from "assets/logo.svg";
@@ -7,7 +8,9 @@ import logoImg from "assets/logo.svg";
 export const Header = (): ReactElement => {
   return (
     <Container>
-      <img src={logoImg} alt="" />
+      <Link to="/">
+        <img src={logoImg} alt="" />
+      </Link>
 
       <span>
         <Button type="button" aria-label="Ouro Branco, MG" $color="secondary">
