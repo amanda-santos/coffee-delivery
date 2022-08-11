@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 
-import { Container, Form, FormTitle } from "pages/OrderForm/styles";
+import { Container, Form, FormFields, FormTitle } from "pages/OrderForm/styles";
 import { MapPin } from "phosphor-react";
+import { Input } from "components";
 
 export const OrderForm = (): ReactElement => {
   return (
@@ -16,6 +17,16 @@ export const OrderForm = (): ReactElement => {
             <p>Inform the address where you want to receive your order</p>
           </span>
         </FormTitle>
+
+        <FormFields>
+          <Input placeholder="CEP" />
+          <Input placeholder="Street" />
+          <Input placeholder="Number" type="number" />
+          <Input placeholder="Complement" />
+          <Input placeholder="Neighborhood" />
+          <Input placeholder="City" />
+          <Input placeholder="State" />
+        </FormFields>
       </Form>
     </Container>
   );
