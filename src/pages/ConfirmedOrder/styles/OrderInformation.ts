@@ -9,7 +9,19 @@ export const OrderInformation = styled.div`
   justify-content: center;
   gap: 3.2rem;
 
-  border: 1px solid ${({ theme }) => theme.colors["base-label"]};
+  background: linear-gradient(
+        ${({ theme }) => theme.colors["background"]},
+        ${({ theme }) => theme.colors["background"]}
+      )
+      padding-box,
+    linear-gradient(
+        to right,
+        ${({ theme }) => theme.colors["primary-base"]},
+        ${({ theme }) => theme.colors["secondary-base"]}
+      )
+      border-box;
+
+  border: 2px solid transparent;
   border-top-left-radius: 0.6rem;
   border-top-right-radius: 3.6rem;
   border-bottom-left-radius: 3.6rem;
