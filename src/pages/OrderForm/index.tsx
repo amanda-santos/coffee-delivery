@@ -1,16 +1,30 @@
 import { ReactElement } from "react";
+import {
+  Coins,
+  CreditCard,
+  CurrencyDollar,
+  MapPin,
+  Money,
+} from "phosphor-react";
 
-import { Container, Form, FormFields, FormTitle } from "pages/OrderForm/styles";
-import { MapPin } from "phosphor-react";
 import { Input } from "components";
+
+import {
+  Container,
+  FormBox,
+  FormFields,
+  FormTitle,
+  PaymentButton,
+  PaymentButtonsContainer,
+} from "pages/OrderForm/styles";
 
 export const OrderForm = (): ReactElement => {
   return (
     <Container>
       <h5>Complete your order</h5>
 
-      <Form>
-        <FormTitle>
+      <FormBox>
+        <FormTitle $color="primary-dark">
           <MapPin size={24} />
           <span>
             <h6>Delivery address</h6>
@@ -27,7 +41,34 @@ export const OrderForm = (): ReactElement => {
           <Input placeholder="City" />
           <Input placeholder="State" />
         </FormFields>
-      </Form>
+      </FormBox>
+
+      <FormBox>
+        <FormTitle $color="secondary-base">
+          <CurrencyDollar size={24} />
+          <span>
+            <h6>Payment</h6>
+            <p>Payment is made on delivery. Choose the way you want to pay</p>
+          </span>
+        </FormTitle>
+
+        <PaymentButtonsContainer>
+          <PaymentButton type="button" $isSelected={false}>
+            <CreditCard size={18} />
+            Credit card
+          </PaymentButton>
+
+          <PaymentButton type="button" $isSelected={false}>
+            <Money size={18} />
+            Debit card
+          </PaymentButton>
+
+          <PaymentButton type="button" $isSelected>
+            <Coins size={18} />
+            Money
+          </PaymentButton>
+        </PaymentButtonsContainer>
+      </FormBox>
     </Container>
   );
 };

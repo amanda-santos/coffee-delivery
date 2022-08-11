@@ -5,10 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  gap: 2.4rem;
 
   h5 {
     font-weight: bold;
     font-family: "Baloo 2", cursive;
-    margin-bottom: 1.6rem;
+    margin-bottom: 0.4rem;
   }
 `;

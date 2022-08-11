@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-export const FormTitle = styled.div`
+type FormTitleProps = {
+  $color: "primary-dark" | "secondary-base";
+};
+
+export const FormTitle = styled.div<FormTitleProps>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: 0.8rem;
+  margin-bottom: 3.2rem;
 
   h6 {
     font-size: 1.6rem;
@@ -13,6 +18,6 @@ export const FormTitle = styled.div`
   }
 
   svg {
-    color: ${({ theme }) => theme.colors["primary-dark"]};
+    color: ${({ theme, $color }) => theme.colors[$color]};
   }
 `;

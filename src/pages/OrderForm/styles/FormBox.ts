@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Form = styled.form`
+export const FormBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
