@@ -55,9 +55,16 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h5, h6 {
-    font-size: 2rem;
     font-weight: 500;
     color: ${({ theme }) => theme.colors["base-subtitle"]};
+  }
+
+  h5 {
+    font-size: 2rem;
+  }
+
+  h6 {
+    font-size: 1.8rem;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {

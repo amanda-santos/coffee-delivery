@@ -16,9 +16,9 @@ export const LandingPageInformation = (): ReactElement => {
     <Container>
       <Callout>
         <h1>Find the perfect coffee for any time of day</h1>
-        <h6>
+        <h5>
           With Coffee Delivery you get your coffee wherever you are, anytime
-        </h6>
+        </h5>
 
         <CalloutItemsContainer>
           <IconTextItem

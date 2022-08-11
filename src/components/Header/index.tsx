@@ -1,11 +1,17 @@
 import { ReactElement } from "react";
 import { MapPin, ShoppingCart } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Button, Container } from "components/Header/styles";
 import logoImg from "assets/logo.svg";
 
 export const Header = (): ReactElement => {
+  const navigate = useNavigate();
+
+  const handleCartClick = (): void => {
+    navigate("/confirm-your-order");
+  };
+
   return (
     <Container>
       <Link to="/">
@@ -17,7 +23,12 @@ export const Header = (): ReactElement => {
           <MapPin size={24} weight="fill" style={{ marginRight: "0.4rem" }} />
           Ouro Branco, MG
         </Button>
-        <Button type="button" aria-label="Cart" $color="primary">
+        <Button
+          type="button"
+          aria-label="Cart"
+          $color="primary"
+          onClick={handleCartClick}
+        >
           <ShoppingCart size={24} weight="fill" />
         </Button>
       </span>
