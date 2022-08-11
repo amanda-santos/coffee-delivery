@@ -1,4 +1,8 @@
 import { ReactElement } from "react";
+import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+
+import { IconTextItem } from "components";
+
 import {
   Container,
   MainContent,
@@ -15,7 +19,41 @@ export const ConfirmedOrder = (): ReactElement => {
 
       <MainContent>
         <OrderInformation>
-          <h4>Order Information</h4>
+          <IconTextItem
+            text={
+              <>
+                Delivery at <b>Rua João Daniel Martinelli, 102</b>
+                <br />
+                Farrapos - Porto Alegre, RS
+              </>
+            }
+            icon={<MapPin />}
+            color="secondary-base"
+          />
+
+          <IconTextItem
+            text={
+              <>
+                Expected delivery
+                <br />
+                <b>20 min - 30 min</b>
+              </>
+            }
+            icon={<Timer />}
+            color="primary-base"
+          />
+
+          <IconTextItem
+            text={
+              <>
+                Payment on delivery
+                <br />
+                <b>Credit card</b>
+              </>
+            }
+            icon={<CurrencyDollar />}
+            color="primary-dark"
+          />
         </OrderInformation>
 
         <img src={confirmedOrderImg} alt="" />

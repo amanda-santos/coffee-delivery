@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 
-import { CalloutItem } from "pages/LandingPage/components/CalloutItem";
+import { IconTextItem } from "components";
+
 import {
   Callout,
   CalloutItemsContainer,
@@ -20,22 +21,22 @@ export const LandingPageInformation = (): ReactElement => {
         </h6>
 
         <CalloutItemsContainer>
-          <CalloutItem
+          <IconTextItem
             text="Simple and secure purchase"
             icon={<ShoppingCart />}
             color="primary-dark"
           />
-          <CalloutItem
+          <IconTextItem
             text="Packaging keeps the coffee"
             icon={<Package />}
             color="base-text"
           />
-          <CalloutItem
+          <IconTextItem
             text="Fast and tracked delivery"
             icon={<Timer />}
             color="primary-base"
           />
-          <CalloutItem
+          <IconTextItem
             text="Coffee arrives fresh to you"
             icon={<Coffee />}
             color="secondary-base"

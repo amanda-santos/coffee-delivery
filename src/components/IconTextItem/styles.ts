@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-import { CalloutItemProps } from "pages/LandingPage/components/CalloutItem";
+import { IconTextItemProps } from "components/IconTextItem";
 
-export type CalloutItemContainerProps = {
-  $color: CalloutItemProps["color"];
+export type IconTextItemContainerProps = {
+  $color: IconTextItemProps["color"];
 };
 
-export const CalloutItemContainer = styled.span<CalloutItemContainerProps>`
+export const IconTextItemContainer = styled.span<IconTextItemContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
