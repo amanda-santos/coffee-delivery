@@ -6,10 +6,4 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
   gap: 2.4rem;
-
-  h5 {
-    font-weight: bold;
-    font-family: "Baloo 2", cursive;
-    margin-bottom: 0.4rem;
-  }
 `;

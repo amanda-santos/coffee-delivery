@@ -8,10 +8,10 @@ import {
 } from "phosphor-react";
 
 import { Input } from "components";
+import { OrderFormSection } from "pages/OrderForm/components/OrderFormSection";
 
 import {
   Container,
-  FormBox,
   FormFields,
   FormTitle,
   PaymentButton,
@@ -21,9 +21,7 @@ import {
 export const OrderForm = (): ReactElement => {
   return (
     <Container>
-      <h5>Complete your order</h5>
-
-      <FormBox>
+      <OrderFormSection title="Complete your order">
         <FormTitle $color="primary-dark">
           <MapPin size={24} />
           <span>
@@ -41,9 +39,9 @@ export const OrderForm = (): ReactElement => {
           <Input placeholder="City" />
           <Input placeholder="State" />
         </FormFields>
-      </FormBox>
+      </OrderFormSection>
 
-      <FormBox>
+      <OrderFormSection title="Complete your order">
         <FormTitle $color="secondary-base">
           <CurrencyDollar size={24} />
           <span>
@@ -68,7 +66,9 @@ export const OrderForm = (): ReactElement => {
             Money
           </PaymentButton>
         </PaymentButtonsContainer>
-      </FormBox>
+      </OrderFormSection>
+
+      <OrderFormSection title="Selected coffees">Hi</OrderFormSection>
     </Container>
   );
 };
