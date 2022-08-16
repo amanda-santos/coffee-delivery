@@ -20,6 +20,16 @@ export const Container = styled.div`
     justify-content: center;
 
     color: ${({ theme }) => theme.colors["secondary-base"]};
+
+    transition: all 0.125s ease-in-out;
+
+    &:focus {
+      box-shadow: 0 0 0 2px ${({ theme }) => theme.colors["secondary-base"]};
+    }
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors["base-hover"]};
+    }
   }
 
   span {

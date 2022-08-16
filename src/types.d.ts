@@ -6,3 +6,8 @@ export type Coffee = {
   image: string;
   labels: string[];
 };
+
+export type CartItem = Pick<Coffee, "id" | "image" | "name" | "price"> & {
+  quantity: number;
+  onRemove: (id: Coffee["id"]) => void;
+};

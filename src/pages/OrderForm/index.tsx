@@ -8,17 +8,31 @@ import {
 } from "phosphor-react";
 
 import { Input } from "components";
-import { OrderFormSection } from "pages/OrderForm/components/OrderFormSection";
+import { Button, CartItem, OrderFormSection } from "pages/OrderForm/components";
+import { coffeeData } from "data/coffeeData";
+import { CartItem as CartItemType } from "types";
 
 import {
+  ConfirmOrderButton,
   Container,
   FormFields,
   FormTitle,
-  PaymentButton,
   PaymentButtonsContainer,
+  TotalPriceContainer,
 } from "pages/OrderForm/styles";
 
 export const OrderForm = (): ReactElement => {
+  const cartItems: CartItemType[] = coffeeData.map((item) => {
+    return {
+      id: item.id,
+      name: item.name,
+      image: item.image,
+      price: item.price,
+      quantity: 3,
+      onRemove: (id: CartItemType["id"]) => {},
+    };
+  });
+
   return (
     <Container>
       <OrderFormSection title="Complete your order">
@@ -51,24 +65,45 @@ export const OrderForm = (): ReactElement => {
         </FormTitle>
 
         <PaymentButtonsContainer>
-          <PaymentButton type="button" $isSelected={false}>
-            <CreditCard size={18} />
-            Credit card
-          </PaymentButton>
+          <Button
+            title="Credit card"
+            icon={<CreditCard size={18} />}
+            size="md"
+          />
 
-          <PaymentButton type="button" $isSelected={false}>
-            <Money size={18} />
-            Debit card
-          </PaymentButton>
+          <Button title="Debit card" icon={<Money size={18} />} size="md" />
 
-          <PaymentButton type="button" $isSelected>
-            <Coins size={18} />
-            Money
-          </PaymentButton>
+          <Button
+            title="Money"
+            icon={<Coins size={18} />}
+            size="md"
+            isSelected
+          />
         </PaymentButtonsContainer>
       </OrderFormSection>
 
-      <OrderFormSection title="Selected coffees">Hi</OrderFormSection>
+      <OrderFormSection title="Selected coffees">
+        {cartItems.map((item) => (
+          <CartItem key={item.id} cartItem={item} />
+        ))}
+
+        <TotalPriceContainer>
+          <div>
+            <span>Items total</span>
+            <h6>$ 29,70</h6>
+          </div>
+          <div>
+            <span>Delivery</span>
+            <h6>$ 3,50</h6>
+          </div>
+          <div>
+            <h4>Total</h4>
+            <h4>$ 33,20</h4>
+          </div>
+        </TotalPriceContainer>
+
+        <ConfirmOrderButton type="submit">Confirm order</ConfirmOrderButton>
+      </OrderFormSection>
     </Container>
   );
 };

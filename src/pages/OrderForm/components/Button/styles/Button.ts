@@ -1,14 +1,21 @@
 import styled, { css } from "styled-components";
 
-type PaymentButtonProps = {
+type ButtonProps = {
   $isSelected: boolean;
+  $size: "sm" | "md" | "lg";
 };
 
-export const PaymentButton = styled.button<PaymentButtonProps>`
+enum ButtonPadding {
+  sm = "0.8rem",
+  md = "1.6rem",
+  lg = "2.4rem",
+}
+
+export const Button = styled.button<ButtonProps>`
   background-color: ${({ theme }) => theme.colors["base-button"]};
   border: none;
   border-radius: 0.6rem;
-  padding: 1.6rem;
+  padding: ${({ $size }) => ButtonPadding[$size]};
   width: 100%;
 
   display: flex;
