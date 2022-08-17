@@ -18,9 +18,15 @@ export const Button = styled.button<ButtonProps>`
   padding: ${({ $size }) => ButtonPadding[$size]};
   width: 100%;
 
+  ${({ $size }) =>
+    $size === "md" &&
+    css`
+      min-width: 14.4rem;
+    `}
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.2rem;
 
   font-size: 1.2rem;

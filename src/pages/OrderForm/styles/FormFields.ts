@@ -6,4 +6,8 @@ export const FormFields = styled.div`
   grid-gap: 1.6rem;
 
   width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;

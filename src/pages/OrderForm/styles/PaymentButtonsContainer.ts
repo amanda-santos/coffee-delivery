@@ -7,4 +7,8 @@ export const PaymentButtonsContainer = styled.div`
   justify-content: center;
   gap: 1.2rem;
   width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    flex-direction: row;
+  }
 `;

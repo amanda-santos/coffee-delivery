@@ -4,11 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
-  gap: 2.4rem;
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.xl}) {
-    flex-direction: row;
-  }
 `;
