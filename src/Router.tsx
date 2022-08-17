@@ -10,7 +10,7 @@ export const Router = (): ReactElement => {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/confirm-your-order" element={<OrderForm />} />
-        <Route path="/your-order-was-confirmed" element={<ConfirmedOrder />} />
+        <Route path="/your-order-is-confirmed" element={<ConfirmedOrder />} />
       </Route>
     </Routes>
   );

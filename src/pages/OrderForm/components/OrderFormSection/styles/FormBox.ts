@@ -11,7 +11,7 @@ export const FormBox = styled.div<FormBoxProps>`
   justify-content: center;
   width: 100%;
 
-  padding: 4rem;
+  padding: 2rem;
 
   background-color: ${({ theme }) => theme.colors["base-card"]};
   border-radius: 0.6rem;
@@ -30,4 +30,8 @@ export const FormBox = styled.div<FormBoxProps>`
         max-width: 44.8rem;
       }
     `}
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 4rem;
+  }
 `;
