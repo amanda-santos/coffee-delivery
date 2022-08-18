@@ -9,8 +9,7 @@ import {
 
 import { Input } from "components";
 import { Button, CartItem, OrderFormSection } from "pages/OrderForm/components";
-import { coffeeData } from "data/coffeeData";
-import { CartItem as CartItemType } from "types";
+import { useCartContext } from "contexts/CartProvider";
 
 import {
   ConfirmOrderButton,
@@ -23,18 +22,9 @@ import {
 } from "pages/OrderForm/styles";
 
 export const OrderForm = (): ReactElement => {
-  const coffees = coffeeData.splice(1, 3);
+  const { getCoffeesData, addToCart } = useCartContext();
 
-  const cartItems: CartItemType[] = coffees.map((item) => {
-    return {
-      id: item.id,
-      name: item.name,
-      image: item.image,
-      price: item.price,
-      quantity: 3,
-      onRemove: (id: CartItemType["id"]) => {},
-    };
-  });
+  const cartItems = getCoffeesData(true);
 
   return (
     <Container>
@@ -89,7 +79,7 @@ export const OrderForm = (): ReactElement => {
 
       <OrderFormSection title="Selected coffees" isSelectedCoffeesBox>
         {cartItems.map((item) => (
-          <CartItem key={item.id} cartItem={item} />
+          <CartItem key={item.id} cartItem={item} onAddToCart={addToCart} />
         ))}
 
         <TotalPriceContainer>

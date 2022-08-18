@@ -4,7 +4,7 @@ import {
   CoffeeCard,
   LandingPageInformation,
 } from "pages/LandingPage/components";
-import { coffeeData } from "data/coffeeData";
+import { useCartContext } from "contexts/CartProvider";
 
 import {
   CoffeesContainer,
@@ -13,6 +13,10 @@ import {
 } from "pages/LandingPage/styles";
 
 export const LandingPage = (): ReactElement => {
+  const { addToCart, getCoffeesData } = useCartContext();
+
+  const coffeesData = getCoffeesData();
+
   return (
     <LandingPageContainer>
       <LandingPageInformation />
@@ -21,8 +25,12 @@ export const LandingPage = (): ReactElement => {
         <h3>Our coffees</h3>
 
         <CoffeesGrid>
-          {coffeeData.map((coffee) => (
-            <CoffeeCard coffee={coffee} />
+          {coffeesData.map((coffee) => (
+            <CoffeeCard
+              key={coffee.id}
+              coffee={coffee}
+              onAddToCart={addToCart}
+            />
           ))}
         </CoffeesGrid>
       </CoffeesContainer>

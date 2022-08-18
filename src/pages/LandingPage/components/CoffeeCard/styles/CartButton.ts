@@ -16,7 +16,12 @@ export const CartButton = styled.button`
 
   transition: all 0.125s ease-in-out;
 
-  &:hover {
+  &:hover:enabled {
     background-color: ${({ theme }) => theme.colors["secondary-base"]};
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 `;

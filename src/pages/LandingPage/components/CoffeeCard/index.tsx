@@ -1,9 +1,9 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { ShoppingCart } from "phosphor-react";
 
 import { CounterButtons } from "components";
 import { formatPrice } from "utils/formatPrice";
-import { Coffee } from "types";
+import { CartItem, Coffee, StoredCartItem } from "types";
 
 import {
   CartButton,
@@ -17,9 +17,26 @@ import {
 
 type CoffeeCardProps = {
   coffee: Coffee;
+  onAddToCart: (coffee: StoredCartItem) => void;
 };
 
-export const CoffeeCard = ({ coffee }: CoffeeCardProps): ReactElement => {
+export const CoffeeCard = ({
+  coffee,
+  onAddToCart,
+}: CoffeeCardProps): ReactElement => {
+  const [selectedAmount, setSelectedAmount] = useState(coffee.amount);
+
+  const addToCart = (id: CartItem["id"], amount: CartItem["amount"]): void => {
+    console.log("add to cart", id, amount);
+
+    const cartItem: StoredCartItem = {
+      id,
+      amount,
+    };
+
+    onAddToCart(cartItem);
+  };
+
   return (
     <Container>
       <img src={coffee.image} alt={coffee.name} />
@@ -40,8 +57,15 @@ export const CoffeeCard = ({ coffee }: CoffeeCardProps): ReactElement => {
         </Price>
 
         <FooterButtons>
-          <CounterButtons />
-          <CartButton type="button">
+          <CounterButtons
+            amount={selectedAmount}
+            onChange={(value) => setSelectedAmount(value)}
+          />
+          <CartButton
+            type="button"
+            onClick={() => addToCart(coffee.id, selectedAmount)}
+            disabled={!selectedAmount}
+          >
             <ShoppingCart size={24} weight="fill" />
           </CartButton>
         </FooterButtons>

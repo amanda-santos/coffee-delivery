@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Minus, Plus } from "phosphor-react";
 
 import {
@@ -8,8 +8,16 @@ import {
 
 import { Container } from "components/CounterButtons/styles";
 
-export const CounterButtons = (): ReactElement => {
-  const [count, setCount] = useState(0);
+type CounterButtonsProps = {
+  amount: number;
+  onChange: (amount: number) => void;
+};
+
+export const CounterButtons = ({
+  amount,
+  onChange,
+}: CounterButtonsProps): ReactElement => {
+  const [count, setCount] = useState(amount);
 
   const handleButtonClick = (type: "minus" | "plus"): void => {
     if (
@@ -21,6 +29,10 @@ export const CounterButtons = (): ReactElement => {
 
     setCount((prevState) => (type === "minus" ? prevState - 1 : prevState + 1));
   };
+
+  useEffect(() => {
+    onChange(count);
+  }, [count, onChange]);
 
   return (
     <Container>
