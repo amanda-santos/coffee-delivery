@@ -31,8 +31,6 @@ export const CartItem = ({
     id: CartItemType["id"],
     amount: CartItemType["amount"]
   ): void => {
-    console.log("add to cart", id, amount);
-
     const cartItem: StoredCartItem = {
       id,
       amount,

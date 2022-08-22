@@ -2,10 +2,17 @@ import { ReactElement } from "react";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { useCartContext } from "contexts/CartProvider";
 import { Button, Container } from "components/Header/styles";
 import logoImg from "assets/logo.svg";
 
 export const Header = (): ReactElement => {
+  const { getCoffeesData } = useCartContext();
+  const cartItemsAmount = getCoffeesData(true).reduce(
+    (total, item) => total + item.amount,
+    0
+  );
+
   const navigate = useNavigate();
 
   const handleCartClick = (): void => {
@@ -30,6 +37,7 @@ export const Header = (): ReactElement => {
           onClick={handleCartClick}
         >
           <ShoppingCart size={24} weight="fill" />
+          {cartItemsAmount > 0 && <span>{cartItemsAmount}</span>}
         </Button>
       </span>
     </Container>

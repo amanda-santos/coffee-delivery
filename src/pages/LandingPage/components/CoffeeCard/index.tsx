@@ -27,8 +27,6 @@ export const CoffeeCard = ({
   const [selectedAmount, setSelectedAmount] = useState(coffee.amount);
 
   const addToCart = (id: CartItem["id"], amount: CartItem["amount"]): void => {
-    console.log("add to cart", id, amount);
-
     const cartItem: StoredCartItem = {
       id,
       amount,
