@@ -36,11 +36,19 @@ export const CounterButtons = ({
 
   return (
     <Container>
-      <button type="button" onClick={() => handleButtonClick("minus")}>
+      <button
+        type="button"
+        onClick={() => handleButtonClick("minus")}
+        disabled={count <= MINIMUM_AMOUNT_OF_COFFEES}
+      >
         <Minus weight="bold" />
       </button>
       <span>{count}</span>
-      <button type="button" onClick={() => handleButtonClick("plus")}>
+      <button
+        type="button"
+        onClick={() => handleButtonClick("plus")}
+        disabled={count >= MAXIMUM_AMOUNT_OF_COFFEES}
+      >
         <Plus weight="bold" />
       </button>
     </Container>

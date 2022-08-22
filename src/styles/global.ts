@@ -64,7 +64,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h6 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}) {

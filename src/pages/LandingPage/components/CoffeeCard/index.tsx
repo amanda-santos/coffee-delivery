@@ -51,7 +51,7 @@ export const CoffeeCard = ({
       <Footer>
         <Price>
           <span>$</span>
-          <span>{formatPrice(coffee.price)}</span>
+          <span>{formatPrice(coffee.price, false)}</span>
         </Price>
 
         <FooterButtons>

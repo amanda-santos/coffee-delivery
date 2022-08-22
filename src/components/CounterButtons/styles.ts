@@ -27,8 +27,13 @@ export const Container = styled.div`
       box-shadow: 0 0 0 2px ${({ theme }) => theme.colors["secondary-base"]};
     }
 
-    &:hover {
+    &:hover:enabled {
       background-color: ${({ theme }) => theme.colors["base-hover"]};
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   }
 

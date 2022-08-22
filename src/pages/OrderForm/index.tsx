@@ -6,6 +6,7 @@ import {
   MapPin,
   Money,
 } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 import { Input } from "components";
 import { Button, CartItem, OrderFormSection } from "pages/OrderForm/components";
@@ -14,17 +15,27 @@ import { useCartContext } from "contexts/CartProvider";
 import {
   ConfirmOrderButton,
   Container,
+  EmptyState,
   FormFields,
   FormTitle,
   OrderFormSectionGroup,
   PaymentButtonsContainer,
   TotalPriceContainer,
 } from "pages/OrderForm/styles";
+import { formatPrice } from "utils/formatPrice";
+
+import emptyStateImg from "assets/undraw-coffee-with-friends.svg";
 
 export const OrderForm = (): ReactElement => {
+  const DELIVERY_PRICE = 3.5;
+
   const { getCoffeesData, addToCart } = useCartContext();
 
   const cartItems = getCoffeesData(true);
+  const totalPrice = cartItems.reduce(
+    (total, cartItem) => total + cartItem.price * cartItem.amount,
+    0
+  );
 
   return (
     <Container>
@@ -78,26 +89,38 @@ export const OrderForm = (): ReactElement => {
       </OrderFormSectionGroup>
 
       <OrderFormSection title="Selected coffees" isSelectedCoffeesBox>
-        {cartItems.map((item) => (
-          <CartItem key={item.id} cartItem={item} onAddToCart={addToCart} />
-        ))}
+        {cartItems.length > 0 ? (
+          <>
+            {cartItems.map((item) => (
+              <CartItem key={item.id} cartItem={item} onAddToCart={addToCart} />
+            ))}
 
-        <TotalPriceContainer>
-          <div>
-            <span>Items total</span>
-            <h6>$ 29,70</h6>
-          </div>
-          <div>
-            <span>Delivery</span>
-            <h6>$ 3,50</h6>
-          </div>
-          <div>
-            <h4>Total</h4>
-            <h4>$ 33,20</h4>
-          </div>
-        </TotalPriceContainer>
+            <TotalPriceContainer>
+              <div>
+                <span>Items total</span>
+                <h6>{formatPrice(totalPrice)}</h6>
+              </div>
+              <div>
+                <span>Delivery</span>
+                <h6>{formatPrice(DELIVERY_PRICE)}</h6>
+              </div>
+              <div>
+                <h4>Total</h4>
+                <h4>{formatPrice(totalPrice + DELIVERY_PRICE)}</h4>
+              </div>
+            </TotalPriceContainer>
 
-        <ConfirmOrderButton type="submit">Confirm order</ConfirmOrderButton>
+            <ConfirmOrderButton type="submit">Confirm order</ConfirmOrderButton>
+          </>
+        ) : (
+          <EmptyState>
+            <h5>No coffees selected yet 😞</h5>
+            <p>
+              Click <Link to="/">here</Link> and let's add some coffees
+            </p>
+            <img src={emptyStateImg} alt="" />
+          </EmptyState>
+        )}
       </OrderFormSection>
     </Container>
   );
