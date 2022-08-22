@@ -39,6 +39,10 @@ export const CartItem = ({
     onAddToCart(cartItem);
   };
 
+  const handleRemoveItem = (): void => {
+    addToCart(cartItem.id, 0);
+  };
+
   useEffect(() => {
     addToCart(cartItem.id, selectedAmount);
   }, [cartItem.id, selectedAmount]);
@@ -55,7 +59,13 @@ export const CartItem = ({
               amount={selectedAmount}
               onChange={(value) => setSelectedAmount(value)}
             />
-            <Button icon={<Trash size={18} />} title="Remove" size="sm" />
+            <Button
+              type="button"
+              icon={<Trash size={18} />}
+              title="Remove"
+              size="sm"
+              onClick={handleRemoveItem}
+            />
           </ActionButtons>
         </TitleButtonsContainer>
       </MainContent>
