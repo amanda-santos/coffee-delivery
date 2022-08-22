@@ -10,7 +10,7 @@ export const Container = styled.header`
 
   padding: 3.2rem 2rem;
 
-  span {
+  div {
     display: flex;
     justify-content: space-between;
     align-items: center;

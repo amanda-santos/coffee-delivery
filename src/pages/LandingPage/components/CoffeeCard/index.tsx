@@ -62,7 +62,6 @@ export const CoffeeCard = ({
           <CartButton
             type="button"
             onClick={() => addToCart(coffee.id, selectedAmount)}
-            disabled={!selectedAmount}
           >
             <ShoppingCart size={24} weight="fill" />
           </CartButton>
