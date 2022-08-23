@@ -15,7 +15,7 @@ import macchiatoImg from "assets/coffees-images/macchiato.svg";
 import mocaccinoImg from "assets/coffees-images/mocaccino.svg";
 import traditionalEspressoImg from "assets/coffees-images/traditional-espresso.svg";
 
-export const coffeeData: Coffee[] = [
+export const coffeeData: Omit<Coffee, "amount">[] = [
   {
     id: "1",
     name: "Traditional Espresso",

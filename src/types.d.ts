@@ -8,11 +8,9 @@ export type Coffee = {
   amount: number;
 };
 
-export type CartItem = Pick<Coffee, "id" | "image" | "name" | "price"> & {
-  amount: number;
-  // onRemove: (id: Coffee["id"]) => void;
-};
+export type CartItem = Pick<
+  Coffee,
+  "id" | "image" | "name" | "price" | "amount"
+>;
 
-export type StoredCartItem = Pick<Coffee, "id"> & {
-  amount: number;
-};
+export type StoredCartItem = Pick<Coffee, "id" | "amount">;
