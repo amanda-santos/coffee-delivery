@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { useForm } from "react-hook-form";
 import {
   Coins,
   CreditCard,
@@ -7,6 +8,8 @@ import {
   Money,
 } from "phosphor-react";
 import { Link } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
 
 import { Input } from "components";
 import { Button, CartItem, OrderFormSection } from "pages/OrderForm/components";
@@ -26,7 +29,34 @@ import { formatPrice } from "utils/formatPrice";
 
 import emptyStateImg from "assets/undraw-coffee-with-friends.svg";
 
+const newOrderFormValidationSchema = zod.object({
+  cep: zod.string(),
+  street: zod.string(),
+  number: zod.number(),
+  complement: zod.string(),
+  neighborhood: zod.string(),
+  city: zod.string(),
+  state: zod.string(),
+});
+
+type NewOrderFormData = zod.infer<typeof newOrderFormValidationSchema>;
+
 export const OrderForm = (): ReactElement => {
+  const newOrderForm = useForm<NewOrderFormData>({
+    resolver: zodResolver(newOrderFormValidationSchema),
+    defaultValues: {
+      cep: "",
+      street: "",
+      number: 0,
+      complement: "",
+      neighborhood: "",
+      city: "",
+      state: "",
+    },
+  });
+
+  const { handleSubmit, reset, register, formState } = newOrderForm;
+
   const DELIVERY_PRICE = 3.5;
 
   const { getCoffeesData, addToCart } = useCartContext();
@@ -37,8 +67,15 @@ export const OrderForm = (): ReactElement => {
     0
   );
 
+  console.log(formState.errors, formState.isValid);
+
+  const handleCreateNewOrder = (data: NewOrderFormData): void => {
+    console.log(data);
+    reset();
+  };
+
   return (
-    <Container>
+    <Container onSubmit={handleSubmit(handleCreateNewOrder)}>
       <OrderFormSectionGroup>
         <OrderFormSection title="Complete your order">
           <FormTitle $color="primary-dark">
@@ -50,13 +87,25 @@ export const OrderForm = (): ReactElement => {
           </FormTitle>
 
           <FormFields>
-            <Input placeholder="CEP" />
-            <Input placeholder="Street" />
-            <Input placeholder="Number" type="number" />
-            <Input placeholder="Complement" />
-            <Input placeholder="Neighborhood" />
-            <Input placeholder="City" />
-            <Input placeholder="State" />
+            <Input type="text" placeholder="CEP" {...register("cep")} />
+            <Input type="text" placeholder="Street" {...register("street")} />
+            <Input
+              type="number"
+              placeholder="Number"
+              {...register("number", { valueAsNumber: true })}
+            />
+            <Input
+              type="text"
+              placeholder="Complement"
+              {...register("complement")}
+            />
+            <Input
+              type="text"
+              placeholder="Neighborhood"
+              {...register("neighborhood")}
+            />
+            <Input type="text" placeholder="City" {...register("city")} />
+            <Input type="text" placeholder="State" {...register("state")} />
           </FormFields>
         </OrderFormSection>
 
@@ -118,7 +167,10 @@ export const OrderForm = (): ReactElement => {
             <p>
               Click <Link to="/">here</Link> and let's add some coffees
             </p>
-            <img src={emptyStateImg} alt="" />
+            <img
+              src={emptyStateImg}
+              alt="Three people drinking coffee together"
+            />
           </EmptyState>
         )}
       </OrderFormSection>
