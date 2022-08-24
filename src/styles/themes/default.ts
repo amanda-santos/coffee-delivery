@@ -8,6 +8,8 @@ export const defaultTheme = {
     "secondary-base": "#8047F8",
     "secondary-dark": "#4B2995",
 
+    "danger-base": "#E25858",
+
     "base-title": "#272221",
     "base-subtitle": "#403937",
     "base-text": "#574F4D",

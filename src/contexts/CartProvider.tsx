@@ -9,9 +9,28 @@ export type CartContextType = {
   setCartItems: (cartItems: StoredCartItem[]) => void;
   addToCart: (newItem: StoredCartItem) => void;
   getCoffeesData: (showOnlyAddedCoffees?: boolean) => Coffee[];
+  createOrder: (newOrder: Order) => void;
+  getLatestOrder: () => Order | undefined;
 };
 
 export const CartContext = createContext({} as CartContextType);
+
+type Order = {
+  id: number;
+  items: StoredCartItem[];
+  totalPrice: number;
+  deliveryPrice: number;
+  paymentMethod: "creditCard" | "debitCard" | "money";
+  address: {
+    cep: string;
+    street: string;
+    number: number;
+    complement: string;
+    neighborhood: string;
+    city: string;
+    state: string;
+  };
+};
 
 type CartContextProviderProps = {
   children: ReactNode;
@@ -20,6 +39,10 @@ type CartContextProviderProps = {
 export const CartContextProvider = ({ children }: CartContextProviderProps) => {
   const [cartItems, setCartItems] = useLocalStorage<StoredCartItem[]>(
     "@coffee-delivery:cart-items-state-1.0.0",
+    []
+  );
+  const [orders, setOrders] = useLocalStorage<Order[]>(
+    "@coffee-delivery:orders-state-1.0.0",
     []
   );
 
@@ -45,6 +68,14 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
     }
   };
 
+  const createOrder = (newOrder: Order): void => {
+    setOrders([...orders, newOrder]);
+  };
+
+  const getLatestOrder = (): Order | undefined => {
+    return orders[orders.length - 1];
+  };
+
   const getCoffeesData = (showOnlyAddedCoffees: boolean = false): Coffee[] => {
     const dataWithAmount = coffeeData.map((coffee) => ({
       ...coffee,
@@ -65,6 +96,8 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
         setCartItems,
         addToCart,
         getCoffeesData,
+        createOrder,
+        getLatestOrder,
       }}
     >
       {children}

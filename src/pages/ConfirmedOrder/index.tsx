@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 
 import { IconTextItem } from "components";
+import { useCartContext } from "contexts/CartProvider";
 
 import {
   Container,
@@ -11,7 +12,19 @@ import {
 
 import confirmedOrderImg from "assets/confirmed-order-illustration.svg";
 
-export const ConfirmedOrder = (): ReactElement => {
+enum PaymentMethod {
+  "creditCard" = "Credit card",
+  "debitCard" = "Debit card",
+  "money" = "Money",
+}
+
+export const ConfirmedOrder = (): ReactElement | null => {
+  const { getLatestOrder } = useCartContext();
+  const order = getLatestOrder();
+  const { street, number, neighborhood, city, state } = order?.address || {};
+
+  if (!order) return null;
+
   return (
     <Container>
       <h3>Yay! Your order is confirmed.</h3>
@@ -22,9 +35,9 @@ export const ConfirmedOrder = (): ReactElement => {
           <IconTextItem
             text={
               <>
-                Delivery at <b>Rua João Daniel Martinelli, 102</b>
+                Delivery at <b>{`${street} street, ${number}`}</b>
                 <br />
-                Farrapos - Porto Alegre, RS
+                {`${neighborhood}, ${city} - ${state}`}
               </>
             }
             icon={<MapPin />}
@@ -48,7 +61,7 @@ export const ConfirmedOrder = (): ReactElement => {
               <>
                 Payment on delivery
                 <br />
-                <b>Credit card</b>
+                <b>{PaymentMethod[order.paymentMethod]}</b>
               </>
             }
             icon={<CurrencyDollar />}
@@ -56,7 +69,10 @@ export const ConfirmedOrder = (): ReactElement => {
           />
         </OrderInformation>
 
-        <img src={confirmedOrderImg} alt="" />
+        <img
+          src={confirmedOrderImg}
+          alt="Man driving a purple motorcycle with a box with coffees"
+        />
       </MainContent>
     </Container>
   );

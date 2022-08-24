@@ -42,7 +42,7 @@ export const Button = styled.button<ButtonProps>`
   transition: all 0.125s ease-in-out;
 
   &:focus {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors["secondary-base"]};
+    box-shadow: 0 0 0 1px ${({ theme }) => theme.colors["secondary-base"]};
   }
 
   &:hover {

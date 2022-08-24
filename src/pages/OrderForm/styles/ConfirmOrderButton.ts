@@ -16,7 +16,12 @@ export const ConfirmOrderButton = styled.button`
   cursor: pointer;
   transition: all 0.125s ease-in-out;
 
-  &:hover {
+  &:hover:enabled {
     background-color: ${({ theme }) => theme.colors["primary-dark"]};
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 `;
