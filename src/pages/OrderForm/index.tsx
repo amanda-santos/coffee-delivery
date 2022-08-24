@@ -90,8 +90,6 @@ export const OrderForm = (): ReactElement => {
     0
   );
 
-  console.log(errors);
-
   const handleCreateNewOrder = (addressData: AddressFormData): void => {
     createOrder({
       id: Math.floor(Math.random() * 1000000),
