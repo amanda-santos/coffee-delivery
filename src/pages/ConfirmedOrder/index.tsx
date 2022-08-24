@@ -35,7 +35,7 @@ export const ConfirmedOrder = (): ReactElement | null => {
           <IconTextItem
             text={
               <>
-                Delivery at <b>{`${street} street, ${number}`}</b>
+                Delivery at <b>{`${street}, ${number}`}</b>
                 <br />
                 {`${neighborhood}, ${city} - ${state}`}
               </>
