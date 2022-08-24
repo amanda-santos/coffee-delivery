@@ -53,8 +53,13 @@ type PaymentMethod = "creditCard" | "debitCard" | "money";
 
 export const OrderForm = (): ReactElement => {
   const navigate = useNavigate();
-  const { getCoffeesData, addToCart, createOrder, getLatestOrder } =
-    useCartContext();
+  const {
+    getCoffeesData,
+    addToCart,
+    removeAllItemsFromCart,
+    createOrder,
+    getLatestOrder,
+  } = useCartContext();
 
   const latestOrder = getLatestOrder();
   const { cep, street, number, complement, neighborhood, city, state } =
@@ -99,6 +104,8 @@ export const OrderForm = (): ReactElement => {
       paymentMethod,
       address: addressData,
     });
+
+    removeAllItemsFromCart();
 
     navigate("/your-order-is-confirmed");
   };

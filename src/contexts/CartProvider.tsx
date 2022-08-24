@@ -8,6 +8,7 @@ export type CartContextType = {
   cartItems: StoredCartItem[];
   setCartItems: (cartItems: StoredCartItem[]) => void;
   addToCart: (newItem: StoredCartItem) => void;
+  removeAllItemsFromCart: () => void;
   getCoffeesData: (showOnlyAddedCoffees?: boolean) => Coffee[];
   createOrder: (newOrder: Order) => void;
   getLatestOrder: () => Order | undefined;
@@ -68,6 +69,10 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
     }
   };
 
+  const removeAllItemsFromCart = (): void => {
+    setCartItems([]);
+  };
+
   const createOrder = (newOrder: Order): void => {
     setOrders([...orders, newOrder]);
   };
@@ -95,6 +100,7 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
         cartItems,
         setCartItems,
         addToCart,
+        removeAllItemsFromCart,
         getCoffeesData,
         createOrder,
         getLatestOrder,
