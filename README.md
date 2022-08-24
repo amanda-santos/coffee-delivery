@@ -54,6 +54,9 @@ Technologies used to develop this project:
 
 ## 🖥 Preview
 
+https://user-images.githubusercontent.com/49074930/186475792-254cb15c-bad5-4075-8723-99b6872e0653.mp4
+
+https://user-images.githubusercontent.com/49074930/186475687-ffa190b0-bbd2-4583-a83a-35d19a3ba254.mp4
 
 Click <a href="https://coffee-delivery-amanda-santos.vercel.app/">here</a> to see it live 📺
 
