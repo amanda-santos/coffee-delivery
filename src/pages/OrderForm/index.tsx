@@ -41,7 +41,10 @@ const addressFormValidationSchema = zod.object({
   complement: zod.string(),
   neighborhood: zod.string().min(3, "Please inform a valid neighborhood"),
   city: zod.string().min(3, "Please inform a valid city"),
-  state: zod.string().min(2, "Please inform a valid state"),
+  state: zod
+    .string()
+    .min(2, "Please inform a valid state")
+    .max(2, "Please inform a valid state"),
 });
 
 type AddressFormData = zod.infer<typeof addressFormValidationSchema>;
@@ -50,21 +53,37 @@ type PaymentMethod = "creditCard" | "debitCard" | "money";
 
 export const OrderForm = (): ReactElement => {
   const navigate = useNavigate();
+  const { getCoffeesData, addToCart, createOrder, getLatestOrder } =
+    useCartContext();
+
+  const latestOrder = getLatestOrder();
+  const { cep, street, number, complement, neighborhood, city, state } =
+    latestOrder?.address || {};
 
   const DELIVERY_PRICE = 3.5;
-  const [paymentMethod, setPaymentMethod] =
-    useState<PaymentMethod>("creditCard");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(
+    latestOrder?.paymentMethod || "creditCard"
+  );
 
   const newOrderForm = useForm<AddressFormData>({
     resolver: zodResolver(addressFormValidationSchema),
+    defaultValues: {
+      cep,
+      street,
+      number,
+      complement,
+      neighborhood,
+      city,
+      state,
+    },
   });
+
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = newOrderForm;
 
-  const { getCoffeesData, addToCart, createOrder } = useCartContext();
   const cartItems = getCoffeesData(true);
   const totalPrice = cartItems.reduce(
     (total, cartItem) => total + cartItem.price * cartItem.amount,
@@ -100,9 +119,11 @@ export const OrderForm = (): ReactElement => {
 
           <FormFields>
             <Input
-              type="text"
+              type="number"
               placeholder="CEP"
               error={errors.cep}
+              minLength={8}
+              maxLength={8}
               {...register("cep")}
             />
             <Input
@@ -139,6 +160,8 @@ export const OrderForm = (): ReactElement => {
               type="text"
               placeholder="State"
               error={errors.state}
+              minLength={2}
+              maxLength={2}
               {...register("state")}
             />
           </FormFields>

@@ -70,7 +70,7 @@ export const CartItem = ({
         </TitleButtonsContainer>
       </MainContent>
 
-      <Price>${formatPrice(price)}</Price>
+      <Price>{formatPrice(price)}</Price>
     </Container>
   );
 };
